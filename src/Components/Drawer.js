@@ -165,6 +165,7 @@ export default function PersistentDrawerRight() {
             <Box sx={{ display: { md: "none", lg: "none" } }}>
               <IconButton
                 color="inherit"
+              
                 aria-label="open drawer"
                 edge="end"
                 onClick={handleDrawerOpen}
@@ -201,8 +202,9 @@ export default function PersistentDrawerRight() {
           </IconButton>
           <img
               src="https://desklib.com/logo.png"
-              className="img-fluid"
-            width={90}
+              className="img-fluid pt-1"
+            width={120}
+
               alt=""
             />
         </DrawerHeader>
