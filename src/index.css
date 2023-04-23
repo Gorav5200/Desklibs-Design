@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inder&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: var(--font-manrop);
+ 
+}
+
+:root {
+  --light-background: #f2f2f2;
+  --button-blue: #4a4dc7;
+  --font-inter: "Inter", sans-serif;
+  --font-inder: "Inder", sans-serif;
+  --font-manrop:'Manrope', sans-serif;
+  --heading-color:#405fbd;
+  --button-color:#4a4dc7
+
+}
+
+.anticon-linkedin ,.anticon-twitter,.anticon-reddit-square,.anticon-twitter-square{
+  color: #fff;
+}
