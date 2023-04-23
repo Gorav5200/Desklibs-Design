@@ -109,6 +109,22 @@ function Business() {
               </Grid>
             );
           })}
+          <Button
+          variant="contained"
+          sx={{
+            background: "var(--button-color)",
+            borderRadius: 10,
+            height: 40,
+            width:118,
+            mx:"auto",
+            my:3,
+          textTransform:"none",
+               fontFamily: "var(--font-manrop)",
+            "&:hover , &:focus": { background: "var(--button-color)" },
+          }}
+        >
+         Load More
+        </Button>
         </Grid>
         {/* Content card */}
         <Card sx={{ mt: 5, p: 2, borderRadius: 5 }}>

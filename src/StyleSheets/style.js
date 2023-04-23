@@ -7,9 +7,9 @@ export const theme = createTheme({
     typography: {
       h4: {
         fontFamily: "var(--font-inter)",
-        color: "white",
+        color: "black",
         fontWeight: 700,
-        fontSize: "28.5px",
+        fontSize: "20.5px",
       },
       paragraph: {
         color: "var(--font-color)",
@@ -32,8 +32,6 @@ export const theme = createTheme({
         },
       },
     },
-  
-   
   });
 
 const drawerWidth = 240;

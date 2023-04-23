@@ -80,7 +80,6 @@ const accroidinData = [
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
-  //   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
 export default function CustomizedAccordions() {
@@ -95,9 +94,10 @@ export default function CustomizedAccordions() {
           <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
             <Typography>{heading}</Typography>
           </AccordionSummary>
-          {subHeading && <Typography>{subHeading}</Typography>}
           <AccordionDetails>
-            <Typography>{details}</Typography>
+          {subHeading && <Typography variant="h4"  sx={{color:"var( --heading-color)"}} mb={2}>{subHeading} </Typography> }
+           
+            <Typography>{details} </Typography>
           </AccordionDetails>
         </Accordion>
       </>
