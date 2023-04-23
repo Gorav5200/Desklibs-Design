@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useEffect} from "react";
 import { useTheme } from "@mui/material/styles";
 import { Box, Stack, Typography } from "@mui/material";
 import Drawer from "@mui/material/Drawer";
@@ -20,13 +20,67 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import { IoIosArrowDown } from 'react-icons/io';
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import SearchIcon from "@mui/icons-material/Search";
+import SimpleBackdrop from "./Backdrop";
 
 const drawerWidth = 340;
+
+
+
+const ButtonGroups=()=>{
+  return(
+    <Stack direction="row" spacing={3}>
+    <Button
+      variant="outlined"
+      sx={{
+        fontSize: 14,
+        fontWeight: "400",
+        padding: "4px 26px",
+        borderRadius: 20,
+        color: "var(--button-blue)",
+        textTransform: "none",
+      }}
+    >
+      Pricing
+    </Button>
+    <Button
+      variant="contained"
+      sx={{
+        fontSize: 14,
+        fontWeight: "400",
+        padding: "14px 36px",
+        borderRadius: 20,
+        backgroundColor: "var(--button-blue)",
+        color: "white",
+        textTransform: "none",
+        "&:hover, &:focus": {
+          backgroundColor: "var(--button-blue)",
+        },
+      }}
+    >
+      Sign In
+    </Button>
+  </Stack>
+  )
+}
+
+const SearchBar=()=>{
+ return(
+  <Search>
+  <SearchIconWrapper>
+    <SearchIcon />
+  </SearchIconWrapper>
+  <StyledInputBase
+    placeholder="Search…"
+    sx={{ pt: 0.5 }}
+    inputProps={{ "aria-label": "search" }}
+  />
+</Search>
+ )
+}
 
 export default function PersistentDrawerRight() {
   const theme = useTheme();
@@ -40,9 +94,13 @@ export default function PersistentDrawerRight() {
     setOpen(false);
   };
 
+
+  
   return (
     <Box>
       <CssBaseline />
+    <SimpleBackdrop handleOpen={open} close={handleDrawerClose}/>
+   
       <AppBar position="fixed" open={open} sx={{   boxShadow:"0 4px 28px hsla(0,0%,8%,.05);",}}>
         <Toolbar
           sx={{ background: "white", color: "black", height: 90, }}
@@ -81,16 +139,7 @@ export default function PersistentDrawerRight() {
               }}
             >
               <Stack direction="row" spacing={3}>
-                <Search>
-                  <SearchIconWrapper>
-                    <SearchIcon />
-                  </SearchIconWrapper>
-                  <StyledInputBase
-                    placeholder="Search…"
-                    sx={{ pt: 0.5 }}
-                    inputProps={{ "aria-label": "search" }}
-                  />
-                </Search>
+              <SearchBar/>
               </Stack>
 
               <Stack direction="row"  >
@@ -108,38 +157,7 @@ export default function PersistentDrawerRight() {
                 </Typography>
               </Stack>
 
-              <Stack direction="row" spacing={3}>
-                <Button
-                  variant="outlined"
-                  sx={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    padding: "4px 26px",
-                    borderRadius: 20,
-                    color: "var(--button-blue)",
-                    textTransform: "none",
-                  }}
-                >
-                  Pricing
-                </Button>
-                <Button
-                  variant="contained"
-                  sx={{
-                    fontSize: 14,
-                    fontWeight: "400",
-                    padding: "14px 36px",
-                    borderRadius: 20,
-                    backgroundColor: "var(--button-blue)",
-                    color: "white",
-                    textTransform: "none",
-                    "&:hover, &:focus": {
-                      backgroundColor: "var(--button-blue)",
-                    },
-                  }}
-                >
-                  Sign In
-                </Button>
-              </Stack>
+           <ButtonGroups/>
             </Box>
             {/* center content end */}
 
@@ -163,7 +181,7 @@ export default function PersistentDrawerRight() {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
-
+        
           "& .MuiDrawer-paper": {
             width: drawerWidth,
           },
@@ -173,6 +191,7 @@ export default function PersistentDrawerRight() {
         open={open}
       >
         <DrawerHeader>
+
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronLeftIcon />
@@ -180,34 +199,33 @@ export default function PersistentDrawerRight() {
               <ChevronRightIcon />
             )}
           </IconButton>
+          <img
+              src="https://desklib.com/logo.png"
+              className="img-fluid"
+            width={90}
+              alt=""
+            />
         </DrawerHeader>
         <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+        
+      
+        <List sx={{p:2}}>
+        <SearchBar/>
+          {["Study", "Writing","HomeWork", "Help"].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+              <ListItemButton >
+                <Typography variant="paragraph">{text} </Typography>
               </ListItemButton>
+                <IoIosArrowDown/>
             </ListItem>
           ))}
         </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+         <Stack sx={{mx:"auto"}}>
+         <ButtonGroups/>
+         </Stack>
       </Drawer>
     </Box>
   );
 }
+
+

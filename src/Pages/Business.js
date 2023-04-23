@@ -21,6 +21,7 @@ import { NormalCard } from "../Components/StudyCard";
 import MultiActionAreaCard from "../Components/ViewDocument";
 import CustomizedAccordions from "../Components/Accordian";
 import BasicBreadcrumbs from "../Components/BreadCrumbs";
+import SimpleBackdrop from "../Components/Backdrop";
 
 const headingStyle = {
   color: "#405fbd",
@@ -52,7 +53,7 @@ function Business() {
         }}
       >
         <BasicBreadcrumbs />
-
+         <SimpleBackdrop/>
         <Grid
           container
           sx={{
